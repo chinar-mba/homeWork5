@@ -14,6 +14,8 @@ class ViewController: UIViewController {
     
     private lazy var tableView: UITableView = {
         let view = UITableView()
+        view.rowHeight = 150
+        view.layer.cornerRadius = 60
         return view
     }()
     
@@ -21,7 +23,6 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        title = "Products"
         
         tableView.dataSource = self
         tableView.delegate = self
@@ -47,7 +48,12 @@ class ViewController: UIViewController {
         view.addSubview(tableView)
         
         tableView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
+            make.top.equalToSuperview()
+            make.right.equalToSuperview().inset(10)
+            make.left.equalToSuperview()
+            make.bottom.equalToSuperview()
+            make.height.equalTo(100)
+            make.width.equalTo(360)
         }
     }
 }

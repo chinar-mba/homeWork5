@@ -18,6 +18,7 @@ class CustomTableViewCell: UITableViewCell {
         label.textColor = .systemCyan
         return label
     }()
+    
     let descriptionLabel: UILabel = {
         let label = UILabel()
         label.text = ""
@@ -34,19 +35,20 @@ class CustomTableViewCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
 
         addSubview(bgView)
+        bgView.addSubview(images)
         bgView.addSubview(title)
         bgView.addSubview(descriptionLabel)
-        bgView.addSubview(images)
 
         bgView.snp.makeConstraints { make in
-            make.top.leading.trailing.equalToSuperview()
+            make.top.equalToSuperview()
             make.bottom.equalTo(100)
-            
+            make.height.equalTo(100)
         }
         images.snp.makeConstraints { make in
-            make.top.leading.equalToSuperview()
-            make.height.equalTo(50)
-            make.width.equalTo(70)
+            make.top.equalToSuperview()
+            make.right.equalToSuperview().offset(150)
+            make.height.equalTo(120)
+            make.width.equalTo(150)
         }
         title.snp.makeConstraints { make in
             make.top.equalToSuperview()
@@ -61,7 +63,3 @@ class CustomTableViewCell: UITableViewCell {
             fatalError("init(coder:) has not been implemented")
         }
     }
-
-
-
-
