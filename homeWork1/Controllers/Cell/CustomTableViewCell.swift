@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class CustomTableViewCell: UITableViewCell {
     
@@ -59,7 +60,16 @@ class CustomTableViewCell: UITableViewCell {
             make.leading.equalTo(images.snp.trailing).offset(10)
         }
     }
-        required init?(coder: NSCoder) {
+    
+    func updateInfo(model: Product) {
+        title.text = model.title
+        descriptionLabel.text = model.description
+        images.kf.setImage(with: URL(string: model.thumbnail ?? ""))
+    }
+    
+    required init?(coder: NSCoder) {
             fatalError("init(coder:) has not been implemented")
         }
-    }
+}
+
+
